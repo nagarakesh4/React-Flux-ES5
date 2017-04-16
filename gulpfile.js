@@ -11,6 +11,8 @@ var source = require('vinyl-source-stream'); //Use conventional text stream with
 
 var concat = require('gulp-concat'); //concatenate files (css bootstrap)
 
+var lint = require('gulp-eslint'); //will lint js files including jsx
+
 //start a local dev server
 gulp.task('connect', function(){
 	connect.server({
@@ -50,11 +52,17 @@ gulp.task('css', function(){
 	gulp.src(config.paths.css) //look for css paths
 		.pipe(concat('bundle.css')) //concatenate and keep in bundle.css
 		.pipe(gulp.dest(config.paths.dist + '/css')); //paste them in css
-})
+});
+
+gulp.task('lint', function(){
+	return gulp.src(config.paths.js)
+		.pipe(lint({configFile: 'eslint.config.json'}))
+		.pipe(lint.format());
+});
 
 gulp.task('watch', function(){
 	gulp.watch(config.paths.html, ['html']);
-	gulp.watch(config.paths.js, ['js']);
+	gulp.watch(config.paths.js, ['js', 'lint']); //each time js changes also test lint
 });
 
-gulp.task('default', ["html", "js", "css", "open", "watch"]);
+gulp.task('default', ["html", "js", "css", "lint", "open", "watch"]);
