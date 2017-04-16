@@ -1,0 +1,27 @@
+setting up a studio everyday in the same layout except for few changes
+
+2 ways to do
+	Tearing apart whatever was kept the day before and rebuilding everything afresh
+	or Efficiently, comparing the current (previous day) layout to the desired (new day) layout and change few things in effective way to get the desired state
+	
+The first way is done without comparision and is a complete manual step which takes a lot of time.
+
+Virtual DOM - React's Virtual DOM will compare the current state of the DOM to the new desired state and determines the most efficient way to update the DOM.
+
+It is a simple Mental model. Clear representation of data and DOM is in React
+
+More Why? - Updating the DOM is expensive (large set of processing), redrawing DOM is inefficient. 
+In current frameworks (Angular, Ember, Knockout) For any state changes, they will immediately update the DOM to reflect the new state. React monitors the value of each component state, when component state changes react compare the existing DOM state to the desired DOM stage and determins the least expensive to update the DOM. This avoids layout trashing i.e., browser re-calculates position when DOM element changes. Mobile devices consumes battery if this happens. Comparision happens in memory so it is very fast. DOM changes examples : removing row etc., Angular track by overcomes this issue.
+
+Virtual DOM results: Khan academy example vs backbone backbone renders everything from scratch on key press
+
+shouldComponentUpdate: method, tells react not to update DOM at all even for any state change
+Immutable: DS : a fresh copy is made when we need to change data
+
+Synthetic events: abstracts browser specific events and quirks, instead react attachs event handler, like to each row in table. React attaches at highest level.
+Isomorphic Support: renders on server when no DOM exists at all
+React Native: DOM is abstracted away so React can also be used in react native
+
+Virtual DOM isnot just biased based on performance but also on the above three approaches discussed
+
+JSX - HTML compiles down to JS and strict compile time checking unline JS in HTML

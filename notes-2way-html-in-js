@@ -1,0 +1,17 @@
+2 Way binding
+Cascading updates are avoided, Tricky debugging is avoided as well. Uni dir using flux.
+
+React and MVC
+React is V and C.
+
+JSX 
+HTML in javascript
+JSX compiles down to JS
+is easier to write
+
+HTML in JS : Justification
+Angular ng-repeat, Knockout, ember uses JS in html. And it is domain specific, like ng repeat is different in diffent frameworks listed above. 
+
+React : Opposite of JS in HTML. Use JS as markup. No need to know domain specific language
+
+HTML isn't strictly typed, typo cannot be known until runtime, in JSX any typo the compilation fails (like even closing tags). JSX - Fail fast, Fail loudly, debugging is easier
