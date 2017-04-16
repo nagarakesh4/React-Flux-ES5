@@ -1,0 +1,27 @@
+{
+  "name": "react-flux-es5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulp.configure.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nagarakesh4/React-Flux-ES5.git"
+  },
+  "author": "Venkata Buddhiraju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nagarakesh4/React-Flux-ES5/issues"
+  },
+  "homepage": "https://github.com/nagarakesh4/React-Flux-ES5#readme",
+  "dependencies": {
+    "browserify": "^14.3.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-open": "^2.0.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
