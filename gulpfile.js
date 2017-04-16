@@ -9,6 +9,8 @@ var browserify = require('browserify'); //bundles js files for browser to unders
 var reactify = require('reactify'); //transforms React JSX to JS
 var source = require('vinyl-source-stream'); //Use conventional text stream with gulp
 
+var concat = require('gulp-concat'); //concatenate files (css bootstrap)
+
 //start a local dev server
 gulp.task('connect', function(){
 	connect.server({
@@ -32,19 +34,27 @@ gulp.task('html', function(){
 		.pipe(connect.reload()); //reload the local dev server
 });
 
+//browserify the js files, and copy the files to dist folder bundle.js file
 gulp.task('js', function(){
 	browserify(config.paths.mainJS)
 		.transform(reactify)
 		.bundle()
 		.on('error', console.error.bind(console))
-		.pipe(source('bundle.js'))
-		.pipe(gulp.dest(config.paths.dist + '/scripts'))
+		.pipe(source('bundle.js')) //bundle all js to bundle.js
+		.pipe(gulp.dest(config.paths.dist + '/scripts')) //keep bundle.js in this folder
 		.pipe(connect.reload());
 });
+
+//css task
+gulp.task('css', function(){
+	gulp.src(config.paths.css) //look for css paths
+		.pipe(concat('bundle.css')) //concatenate and keep in bundle.css
+		.pipe(gulp.dest(config.paths.dist + '/css')); //paste them in css
+})
 
 gulp.task('watch', function(){
 	gulp.watch(config.paths.html, ['html']);
 	gulp.watch(config.paths.js, ['js']);
 });
 
-gulp.task('default', ["html", "js", "open", "watch"]);
+gulp.task('default', ["html", "js", "css", "open", "watch"]);
